@@ -1,106 +1,104 @@
-# Auto EDA Tool 🔍
+<h1 align="center">AutoEDA-Tool</h1>
+
+<p align="center">
+  <strong>R Shiny application for automated exploratory data analysis.</strong><br>
+  Upload a CSV, inspect summaries, visualize distributions, detect outliers, review correlations, and explore data quality quickly.
+</p>
 
 
-[![Shiny](https://img.shields.io/badge/Shiny-1.7.0-blue.svg)](https://shiny.rstudio.com/)
-[![ggplot2](https://img.shields.io/badge/ggplot2-3.4.0-red.svg)](https://ggplot2.tidyverse.org/)
-[![R](https://img.shields.io/badge/R-4.0+-blue.svg)](https://www.r-project.org/)
 
+<p align="center">
+  <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/AjaySoni-Dev/AutoEDA-Tool?style=social">
+  <img alt="GitHub forks" src="https://img.shields.io/github/forks/AjaySoni-Dev/AutoEDA-Tool?style=social">
+</p>
 
-An interactive web application built with **R Shiny** that automates Exploratory Data Analysis (EDA) tasks. Upload your CSV data and get instant insights through comprehensive visualizations and statistical summaries. This README is embedded here as Markdown so you can preview, copy, or export it.
+<p align="center">
+  <img alt="status: working prototype" src="https://img.shields.io/badge/status-working%20prototype-blue">
+  <img alt="stack: R / Shiny" src="https://img.shields.io/badge/stack-R%20/%20Shiny-informational">
+  <img alt="license: MIT" src="https://img.shields.io/badge/license-MIT-green">
 
+</p>
 
----
-
-
-## ✨ Overview
-
-
-Auto EDA Tool reduces the initial friction of understanding a dataset. It combines automated statistical summaries, intelligent visualizations, and actionable insights so data scientists, students, and analysts can move faster from raw CSV to informed hypotheses.
-
-
-Key goals:
-- Provide immediate, accurate overviews of unknown datasets.
-- Surface data quality issues (missing values, inconsistent types, duplicates).
-- Suggest next steps: feature engineering hints, candidate models, or data cleaning actions.
-
-
----
-
-
-## 📊 Features (Expanded)
-
-
-### Data Visualization
-- **Histograms**: Auto-binning and adjustable bin width; log-scale option for skewed data.
-- **Scatter Plots**: Pairwise scatter with optional smoothing lines (loess) and trend summaries.
-- **Box Plots**: Grouped boxplots, violin-plot alternatives, and automatic outlier flagging.
-- **Density Plots**: Kernel density with bandwidth selection and multimodality detection.
-- **Bar Charts & Counts**: For categorical variables — stacked and normalized views.
-- **Pair Plots (Scatterplot matrix)**: For quick multivariate relationships and correlation patterns.
-
-
-### Statistical & Quality Analysis
-- **Summary Statistics**: Count, unique values, missing counts and percentages, min, max, mean, median, mode, standard deviation, variance, skewness, kurtosis.
-- **Correlation Matrix**: Pearson, Spearman and Kendall options; correlation heatmap with significance masking.
-- **Missing Value Report**: Per-column and per-row missingness, patterns, and suggested imputations (mean/median/mode/KNN).
-- **Outlier Detection**: IQR, z-score, and robust MAD-based detection with an explanation for each flagged row.
-- **Data Type Inference**: Detects numeric, integer, categorical, boolean, date/time, and text — suggests conversions.
-- **Duplicate Detection**: Exact and fuzzy matching to find possibly duplicated records.
-
-
-### Automation & UX
-- **Drag & Drop Upload**: Accepts CSV, TSV, and gzipped CSVs.
-- **Auto Schema Preview**: Shows inferred schema and lets you override types before analysis.
-- **Interactive Filtering**: Apply filters to the dataset and regenerate plots on the fly.
-- **Downloadable Reports**: Export an interactive HTML report or a static PDF report of the EDA.
-- **Dark Mode & Responsive Layout**: Mobile-friendly and accessible color palettes.
-
+<p align="center">
+  <a href="#overview">Overview</a> ·
+  <a href="#features">Features</a> ·
+  <a href="#repository-structure">Repository Structure</a> ·
+  <a href="#run-locally">Run Locally</a> ·
+  <a href="#limitations">Limitations</a>
+</p>
 
 ---
 
+## Overview
 
-## 🚀 Quick Start (Expanded)
+**AutoEDA-Tool** is an interactive exploratory data analysis app built with **R Shiny**. It helps users upload a dataset and quickly inspect numerical summaries, missing values, outliers, distributions, and correlations.
 
+The repository includes a working `script.R`, a sample `data.csv`, and one generated distribution image. The included sample dataset has **4,000 rows** and weather-related columns: `Temperature`, `Humidity`, `Air_Pressure`, `Wind_Speed`, and `Weather_Condition`.
 
-### Prerequisites
-- R (version 4.0 or higher)
-- RStudio (recommended)
-- System: macOS, Windows, or Linux
+## Features
 
+- CSV upload through Shiny UI.
+- Dataset preview and summary tables.
+- Missing value inspection.
+- Outlier detection helper logic.
+- Distribution plots.
+- Correlation analysis for numeric columns.
+- Variable selection inputs.
+- Example dataset included for quick testing.
 
-### Installation
+## Repository Structure
 
+| File | Purpose |
+|---|---|
+| `script.R` | Main R Shiny application containing UI, server logic, EDA helpers, plots, tables, and correlation workflow. |
+| `data.csv` | Sample weather dataset for testing the application. |
+| `distribution.jpg` | Example output/visual asset. |
+| `README.md` | Original documentation. |
+| `LICENSE` | MIT license. |
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/yourusername/auto-eda-tool.git
-cd auto-eda-tool
-```
+## Tech Stack
 
+| Area | Tools |
+|---|---|
+| App framework | R Shiny |
+| Visualization | ggplot2, base plotting |
+| Data analysis | R data frames, summary functions, correlation logic |
+| Input format | CSV |
 
-2. **Install R package dependencies**
+## Run Locally
+
+Install the required R packages:
+
 ```r
-# Run in R or RStudio
-install.packages(c("shiny", "ggplot2", "dplyr", "DT", "shinyWidgets", "shinycssloaders", "plotly", "readr", "skimr", "naniar", "corrplot", "GGally"))
+install.packages("shiny")
+install.packages("ggplot2")
 ```
 
+Run the app:
 
-3. **Run locally**
 ```r
-# in the project directory
-library(shiny)
-runApp("./app")
+shiny::runApp("script.R")
 ```
 
+Or open `script.R` in RStudio and click **Run App**.
 
----
+## Limitations
 
+- The project is currently a single-file Shiny app.
+- There is no packaged `renv.lock` or dependency lock file.
+- File type support is focused on CSV.
+- Advanced profiling, automated report export, and feature recommendation are not implemented yet.
+- The UI is functional, but it can be polished for a more professional portfolio presentation.
 
-## 🧩 App Structure (Suggested)
+## Recommended Improvements
 
+- Add `renv` for reproducible R dependencies.
+- Add screenshots to the README.
+- Add downloadable EDA report export.
+- Add categorical feature plots.
+- Add cleaner modular structure with separate UI/server/helper files.
+- Add better error handling for invalid or empty datasets.
 
-- `app/ui.R` — Shiny UI definitions, layout, and inputs.
-- `app/server.R` — Server logic: data ingestion, reactive analysis, rendering plots.
-- `R/eda_helpers.R` — Reusable helper functions for summaries, plots, and reports.
-- `www/` — Static assets (CSS, JS, images).
-Project maintainer: Your Name — your.email@example.com
+## License
+
+This project is licensed under the MIT License.
